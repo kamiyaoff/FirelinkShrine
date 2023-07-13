@@ -1,0 +1,22 @@
+﻿@model User
+@{
+	ViewData["Title"] = "Log In";
+}
+
+<link rel="stylesheet" href="~/css/loginsignup.css" asp-append-version="true"/>
+
+<div class="form-container-background">
+	<div class="form-container">
+		<form asp-controller="Home" asp-action="Login" method="post">
+			<div class="login-form">
+				<label>Login</label>
+				<input asp-for="Name" class="form-control custom-text-control" type="text" />
+
+				<label>Password</label>
+				<input asp-for="Password" class="form-control custom-text-control" type="password" />
+
+				<button type="submit" class="btn-dark-souls-square">Log In</button>
+			</div>
+		</form>
+	</div>
+</div>

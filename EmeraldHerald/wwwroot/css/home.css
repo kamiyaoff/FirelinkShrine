@@ -1,0 +1,47 @@
+﻿.welcome-text {
+	font-size: 18px;
+}
+
+.welcome-container {
+	display: flex;
+	gap: 30px;
+}
+
+.firelink-shrine-text {
+	font-size: 100px;
+	font-family: DarkSoulsHeader;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+.dark-sign-img {
+	width: 400px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.dark-sign-img img {
+	width: 550px;
+	height: 550px;
+}
+
+.home-nav-links {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	gap: 20px;
+	font-size: 100px;
+}
+
+.p-info {
+	color: var(--lighterColorText);
+	margin-left: 20px;
+}
+
+	.p-info::before {
+		content: "♦";
+		margin-right: 10px;
+	}

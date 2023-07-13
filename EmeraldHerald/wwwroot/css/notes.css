@@ -1,0 +1,57 @@
+﻿.notes-container p {
+	margin: 0;
+	padding: 0;
+}
+
+.notes-container {
+	margin: 20px;
+}
+
+.notes-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.notes-header-title {
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.notes-controls {
+	display: flex;
+	gap: 20px;
+	justify-content: end;
+}
+
+.notes-controls button {
+	font-size: 16px;
+}
+
+.notes-links {
+	display: flex;
+	padding: 50px;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+	.notes-links button {
+		width: 800px;
+	}
+
+.ds-note-container {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.ds-note-container p {
+	font-size: 25px;
+}
+
+.ds-note-popup-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10px;
+}

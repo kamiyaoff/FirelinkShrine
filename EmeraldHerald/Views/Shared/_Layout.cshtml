@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Firelink Shrine</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/secondary.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="my-header box-shadow mb-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light">
+                <div class="container-fluid">
+                    <a class="home-logo" asp-controller="Home" asp-action="Index">Firelink Shrine</a>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="my-navbar-link btn-dark-souls" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="my-navbar-link btn-dark-souls" asp-controller="Objective" asp-action="Index">Tasks</a>
+                                <a class="my-navbar-link btn-dark-souls" asp-controller="Note" asp-action="Index">Notes</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-secondary-conrols">
+                        @if (User.Identity!.IsAuthenticated) {
+                            <a class="btn-dark-souls-square" asp-controller="Home" asp-action="Logout">Log Out</a>
+                        }
+                        else {
+                            <a class="btn-dark-souls-square" asp-action="Login" asp-controller="Home">Log In</a>
+                            <a class="btn-dark-souls-square" asp-action="Signup" asp-controller="Home">Sign Up</a>
+                        }
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <audio id="victory-sfx">
+        <source src="~/assets/victory.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="death-sfx">
+        <source src="~/assets/youdied.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="new-area-sfx">
+        <source src="~/assets/dsnewarea.mp3" type="audio/mp3" />
+    </audio>
+
+    <div class="container main-container">
+		<img class="ds-frame frame-top-left" src="~/assets/frames.png" alt="frame" />
+        <img class="ds-frame frame-top-right" src="~/assets/frames.png" alt="frame" />
+        <img class="ds-frame frame-bottom-left" src="~/assets/frames.png" alt="frame" />
+        <img class="ds-frame frame-bottom-right" src="~/assets/frames.png" alt="frame" />
+
+        <div id="confirmOverlay" class="ds-popup-overlay" style="display: none;">
+            <div class="ds-popup-container">
+                <p id="confirmOverlayQuestion"></p>
+				<div class="ds-popup-buttons">
+                    <button class="btn-dark-souls-square" onclick="confirmPopup(true)">YES</button>
+                    <button class="btn-dark-souls-square" onclick="confirmPopup(false)">NO</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="notificationOverlay" class="ds-popup-overlay" style="display: none;">
+            <div class="ds-popup-container">
+                <p id="notificationContent"></p>
+                <div class="ds-popup-buttons">
+                    <button class="btn-dark-souls-square" onclick="closeNotification()">OK</button>
+                </div>
+            </div>
+        </div>
+
+		
+
+        <div id="announce-popup" class="announce-popup">
+            <p id="announce-text"></p>
+        </div>
+
+        <div id="new-objective-popup" class="new-objective-popup">
+			<p>New objective</p>
+        </div>
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2023 Firelink Shrine. <i>Nameless, accursed Undead, unfit even to be cinders. And so it is...that ash seeketh embers.</i>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

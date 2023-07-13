@@ -1,0 +1,129 @@
+﻿@model FirelinkShrine.Models.ViewModels.ObjectiveIndexViewModel
+@{
+	ViewData["Title"] = "Tasks";
+}
+
+<link rel="stylesheet" href="~/css/tasks.css" asp-append-version="true" />
+
+<div>
+	<div class="container">
+		<div class="tasks-container">
+			<div class="tasks-introduction">
+				<p>My tasks + 10</p>
+				@if (User.Identity!.IsAuthenticated) {
+					<div class="tasks-introduction-controls">
+						<form class="tasks-introduction-controls">
+							<select name="status" class="form-select bg-dark text-white custom-select"
+									asp-items="@Model.FilterViewModel.Statuses"></select>
+							<input name="name" placeholder="Search by name" value="@Model.FilterViewModel.SelectedName"
+								class="form-control custom-text-control" style="width: 300px;" />
+							<button class="btn-dark-souls-square" type="submit">Filter</button>
+						</form>
+						<button class="btn-dark-souls-square" onclick="openForm()">New Task</button>
+					</div>
+				}	
+			</div>
+			<div>
+				<div class="tasks-header">
+					<p>
+						<a asp-action="Index"
+						   asp-route-sortOrder="@(Model.SortViewModel.NameSort)"
+						   asp-route-name="@(Model.FilterViewModel.SelectedName)"
+						   asp-route-status="@(Model.FilterViewModel.SelectedStatus)">Name</a>
+					</p>
+					<p>
+						<a asp-action="Index"
+						   asp-route-sortOrder="@(Model.SortViewModel.StatusSort)"
+						   asp-route-name="@(Model.FilterViewModel.SelectedName)"
+						   asp-route-status="@(Model.FilterViewModel.SelectedStatus)">Status</a>
+					</p>
+					<p>
+						<a asp-action="Index"
+						   asp-route-sortOrder="@(Model.SortViewModel.PrioritySort)"
+						   asp-route-name="@(Model.FilterViewModel.SelectedName)"
+						   asp-route-status="@(Model.FilterViewModel.SelectedStatus)">Priority</a>
+					</p>
+					<p>
+						<a asp-action="Index"
+						   asp-route-sortOrder="@(Model.SortViewModel.CreatedSort)"
+						   asp-route-name="@(Model.FilterViewModel.SelectedName)"
+						   asp-route-status="@(Model.FilterViewModel.SelectedStatus)">Created</a>
+					</p>
+					<p>
+						<a asp-action="Index"
+						   asp-route-sortOrder="@(Model.SortViewModel.DeadlineSort)"
+						   asp-route-name="@(Model.FilterViewModel.SelectedName)"
+						   asp-route-status="@(Model.FilterViewModel.SelectedStatus)">Deadline</a>
+					</p>
+					<p>Controls</p>
+				</div>
+			</div>
+			<div id="tasks-list">
+
+				@if (Model is not null) {
+					@foreach (var task in Model.Objectives) {
+						<div class="task-info ">
+							<input type="checkbox" class="task-checkbox" data-status="@task.StatusBool" disabled />
+							<input class="task-id" type="hidden" value="@task.Id" />
+							<p class="task-name btn-dark-souls" data-goal="@task.Goal">@task.ShortGoal</p>
+							<p class="task-status">@task.Status</p>
+							<p class="task-priority">@task.Priority</p>
+							<p>@task.Created.ToString("dd MMM yyyy hh:mm tt")</p>
+							<p data-timeleft="@task.TimeLeft" data-status="@task.Status" class="deadline-text">@task.Deadline.ToString("dd MMM yyyy hh:mm tt")</p>
+							<div class="task-controls">
+								<button class="btn-dark-souls-square btn-smaller btn-finish" data-id="@task.Id">Finish</button>
+								<button class="btn-dark-souls-square btn-smaller btn-abandon" data-id="@task.Id">Abandon</button>
+								<button class="btn-dark-souls-square btn-smaller btn-delete" data-id="@task.Id">X</button>
+							</div>
+						</div>
+					}
+				}
+				else {
+					<p class="no-items-p">No items</p>
+				}
+			</div>
+
+			@if (User.Identity!.IsAuthenticated) {
+				<div class="pagination-container">
+					<page-link page-model="Model!.PageViewModel" page-action="Index"
+						   page-url-name="@(Model.FilterViewModel.SelectedName!)"
+						   page-url-status="@(Model.FilterViewModel.SelectedStatus)"
+						   page-url-sortOrder="@(Model.SortViewModel.Current)"></page-link>
+				</div>
+			}
+
+			<div class="form-popup" id="myForm">
+				<div class="form-popup-summary">
+					<div class="form-popup-header">
+						<p>Add new task</p>
+					</div>
+					<div class="form-container-framer">
+						<img class="ds-frame frame-top-left" src="~/assets/frames.png" alt="frame" />
+						<img class="ds-frame frame-top-right" src="~/assets/frames.png" alt="frame" />
+						<img class="ds-frame frame-bottom-left" src="~/assets/frames.png" alt="frame" />
+						<img class="ds-frame frame-bottom-right" src="~/assets/frames.png" alt="frame" />
+						<div class="form-container">
+
+							<input id="short-goal" type="text" placeholder="Goal" class="form-control custom-text-control">
+							<label>Priority</label>
+							<select id="priority" class="form-select bg-dark text-white custom-select">
+								<option>High</option>
+								<option selected>Medium</option>
+								<option>Low</option>
+							</select>
+							<input id="timeleft" placeholder="Lead time (hours)" type="number" min="1" required class="form-control custom-text-control" />
+							<textarea id="goal" placeholder="Description" class="form-control custom-text-control"></textarea>
+
+							<button id="add-task-btn" class="btn-dark-souls-strict">Add Task</button>
+							<button type="button" class="btn-dark-souls-strict" onclick="closeForm()">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script src="~/js/tasks.js" asp-append-version="true"></script>
+<script src="~/js/objectiveapi.js" asp-append-version="true"></script>

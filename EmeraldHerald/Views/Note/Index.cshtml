@@ -1,0 +1,78 @@
+﻿@model FirelinkShrine.Models.ViewModels.NoteIndexViewModel
+@{
+	ViewData["Title"] = "Notes";
+}
+
+<link rel="stylesheet" href="~/css/notes.css" asp-append-version="true"/>
+
+<div class="notes-container">
+	
+	<div id="noteOverlay" class="ds-popup-overlay" style="display: none;">
+		<div class="ds-popup-container ds-note-container">
+			<div class="ds-note-popup-header">
+				<p id="noteName"></p>
+				<form asp-controller="Note" asp-action="DeleteNote" method="post">
+					<input id="deleteId" name="id" type="hidden" />
+					<button class="btn-dark-souls-square" type="submit">DELETE</button>
+				</form>
+			</div>
+			<form asp-controller="Note" asp-action="EditNote" method="post">
+				<input id="saveId" name="id" type="hidden" />
+				<textarea name="body" id="noteBody" rows="15" class="form-control custom-text-control"></textarea>
+				<div class="ds-popup-buttons">
+					<button class="btn-dark-souls-square" type="submit">SAVE</button>
+					<button class="btn-dark-souls-square close-note-btn">CLOSE</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="notes-header">
+		<div>
+			<p class="notes-header-title">Notes + 10</p>
+		</div>
+		<div class="notes-controls">
+			<button class="btn-dark-souls-square" onclick="openForm()">Add new</button>
+		</div>
+	</div>
+	<div class="notes-links">
+		@if (!User.Identity!.IsAuthenticated || Model.Notes is null || !Model.Notes.Any()) {
+			<button class="btn-dark-souls-strict">No items</button>
+		}
+		else {
+			@foreach (var note in Model.Notes) {
+				<button class="btn-dark-souls-strict note-button" data-noteid="@note.Id">@note.Name</button>
+			}
+		}
+		
+	</div>
+
+	<div class="pagination-container">
+		<page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
+	</div>
+
+	<div class="form-popup" id="myForm">
+		<div class="form-popup-summary">
+			<div class="form-popup-header">
+				<p>Add new note</p>
+			</div>
+			<div class="form-container-framer">
+				<img class="ds-frame frame-top-left" src="~/assets/frames.png" alt="frame" />
+				<img class="ds-frame frame-top-right" src="~/assets/frames.png" alt="frame" />
+				<img class="ds-frame frame-bottom-left" src="~/assets/frames.png" alt="frame" />
+				<img class="ds-frame frame-bottom-right" src="~/assets/frames.png" alt="frame" />
+				<form asp-controller="Note" asp-action="AddNote" method="post">
+					<div class="form-container">
+						<input asp-for="Note!.Name" type="text" placeholder="Name" maxlength="60" required class="form-control custom-text-control">
+
+						<button type="submit" class="btn-dark-souls-strict">Add Note</button>
+						<button type="button" class="btn-dark-souls-strict" onclick="closeForm()">Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="~/js/notes.js" asp-append-version="true"></script>
+<script src="~/js/notesapi.js" asp-append-version="true"></script>

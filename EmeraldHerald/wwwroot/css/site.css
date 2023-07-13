@@ -1,0 +1,574 @@
+:root {
+	--lighterColor: rgba(245, 197, 115, 0.4);
+	--darkerColor: rgba(255, 100, 0, 0.4);
+	--lighterColorText: rgba(245, 197, 115, 1);
+	--darkerColorText: rgba(255, 100, 0, 1);
+	--globalColor: #fff4e0;
+}
+
+html {
+	font-size: 14px;
+}
+
+.my-header {
+	background-color: rgba(0,0,0,0.6);
+	backdrop-filter: blur(3px);
+	border-bottom: 1px solid black;
+}
+
+@media (min-width: 768px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+@font-face {
+	font-family: 'DarkSoulsHeader';
+	src: url('/lib/font/OptimusPrinceps.ttf');
+}
+
+@font-face {
+	font-family: 'DarkSoulsRegular';
+	src: url('/lib/font/Lora-VariableFont_wght.ttf');
+}
+
+.my-navbar-link {
+	color: white;
+	text-decoration: none;
+	padding: 5px;
+	transition: color linear 0.2s;
+}
+
+	.my-navbar-link:hover {
+		color: darkgray;
+	}
+
+.my-validation-summary ul {
+	list-style: none;
+	padding-left: 15px;
+}
+
+	.my-validation-summary ul li {
+		list-style: disclosure-open;
+		color: red;
+		margin: 0;
+	}
+
+* {
+	font-family: DarkSoulsRegular;
+	color: var(--globalColor);
+}
+
+.main-container {
+	background-color: rgba(0,0,0,0.9);
+	background-image: url('/assets/dsclouds.png');
+	background-size: 300px;
+	color: white;
+	border-radius: 10px;
+	padding: 70px;
+	box-shadow: 1px 1px 20px rgba(0,0,0,0.5);
+	position: relative;
+}
+
+.ds-frame {
+	position: absolute;
+	pointer-events: none;
+}
+
+.frame-top-left {
+	top: 30px;
+	left: 30px;
+}
+
+.frame-top-right {
+	top: 30px;
+	right: 30px;
+	transform: rotate(90deg);
+}
+
+.frame-bottom-left {
+	bottom: 30px;
+	left: 30px;
+	transform: rotate(270deg);
+}
+
+.frame-bottom-right {
+	bottom: 30px;
+	right: 30px;
+	transform: rotate(180deg);
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+	box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+
+.btn-dark-souls {
+	background-color: transparent;
+	color: white;
+	border: none;
+	transition: background-image linear 1s;
+	padding: 0 30px;
+	text-decoration: none;
+}
+
+	.btn-dark-souls:hover {
+		color: white;
+		background-image: radial-gradient(rgba(255, 100, 0, 0.4) 1%, transparent 80%);
+	}
+
+	.btn-dark-souls:focus {
+		outline: none;
+		box-shadow: none;
+	}
+
+.btn-dark-souls-strict {
+	background-color: transparent;
+	font-size: 18px;
+	border: none;
+	color: white;
+	transition: background-image linear 1s;
+	padding: 0 30px;
+	text-decoration: none;
+	position: relative;
+}
+
+.btn-dark-souls-strict::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	border-bottom: 2px solid white;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+}
+
+	.btn-dark-souls-strict:hover {
+		color: white;
+		background-image: radial-gradient(rgba(255, 100, 0, 0.4) 1%, transparent 80%);
+	}
+
+	.btn-dark-souls-strict:focus {
+		outline: none;
+		box-shadow: none;
+	}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+.header-secondary-conrols {
+	display: flex;
+	gap: 30px;
+}
+
+	.header-secondary-conrols a {
+		font-size: 16px;
+		width: 100px;
+		text-align: center;
+	}
+
+.btn-dark-souls-square {
+	padding: 2px, 30px;
+	font-size: 20px;
+	color: white;
+	background-color: rgba(50,50,50,0.5);
+	border: 1px solid var(--lighterColor);
+	outline: 2px solid var(--lighterColor);
+	outline-offset: 2px;
+	transition: box-shadow 0.1s;
+	text-decoration: none;
+}
+
+	.btn-dark-souls-square:hover {
+		box-shadow: inset 1px 1px 15px var(--darkerColor);
+		color: white;
+	}
+
+
+body {
+	margin-bottom: 60px;
+	background-image: url('/assets/bg.jpg');
+	background-size: cover;
+}
+
+.tasks-introduction {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+	.tasks-introduction input {
+		width: 200px;
+	}
+
+	.tasks-introduction p {
+		font-size: 25px;
+		font-weight: 600;
+	}
+
+.tasks-header {
+	display: grid;
+	grid-template-columns: auto 110px 130px 180px 170px 170px;
+	align-items: center;
+	border-start-start-radius: 10px;
+	border-start-end-radius: 10px;
+	color: white;
+	background-color: rgba(245, 197, 115, 0.2);
+	padding: 5px;
+	padding-left: 20px;
+}
+	.tasks-header p a {
+		text-decoration: underline dotted;
+		color: antiquewhite;
+	}
+
+	.tasks-header p, .task-info p {
+		margin: 0;
+	}
+
+.btn-smaller {
+	font-size: 14px;
+}
+
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.pag-button-active {
+	background-color: var(--darkerColor);
+	color: var(--lighterColorText);
+}
+
+.pag-button {
+	background-color: var(--lighterColor);
+	color: var(--darkerColorText);
+}
+
+.pagination > li > a {
+	background-color: var(--lighterColor);
+	color: var(--lighterColorText);
+	border: none;
+}
+
+	.pagination > li > a:focus,
+	.pagination > li > a:hover,
+	.pagination > li > span:focus,
+	.pagination > li > span:hover {
+		color: #5a5a5a;
+		background-color: #eee;
+		border-color: #ddd;
+	}
+
+.pagination > .active > a {
+	color: white;
+	background-color: var(--lighterColor) !Important;
+	box-shadow: inset 1px 1px 15px var(--darkerColor);
+	border: none !Important;
+}
+
+	.pagination > .active > a:hover {
+		background-color: var(--darkerColor) !Important;
+		border: solid 1px #5A4181;
+	}
+
+.task-info {
+	display: grid;
+	grid-template-columns: 30px auto 110px 130px 180px 170px 170px;
+	padding: 10px 5px;
+	align-items: center;
+	transition: background-color ease-in 0.05s;
+}
+
+	.task-info:hover {
+		background-color: rgba(245, 197, 115, 0.1);
+	}
+
+	.task-info input {
+		width: 20px;
+		height: 20px;
+	}
+
+.task-status {
+	background-color: rgba(150,150,150,0.2);
+	width: 100px;
+	text-align: center;
+	color: white;
+	font-weight: 600;
+	border-radius: 10px;
+}
+
+.task-priority {
+	border-radius: 10px;
+	color: white;
+	font-weight: 600;
+	text-align: center;
+	width: 90px;
+}
+
+.priority-high {
+	background-color: rgba(255,0,0,0.4);
+}
+
+.priority-medium {
+	background-color: rgba(255, 90, 0, 0.4);
+}
+
+.priority-low {
+	background-color: rgba(0, 150, 0, 0.4)
+}
+
+.status-active {
+	color: var(--lighterColorText);
+}
+
+.status-abandoned {
+	color: indianred;
+}
+
+.status-completed {
+	color: darkgray;
+}
+
+.home-logo {
+	color: white;
+	font-family: DarkSoulsHeader;
+	text-decoration: none;
+	font-size: 25px;
+	margin-right: 30px;
+}
+
+	.home-logo:hover {
+		color: var(--lighterColorText);
+	}
+
+@keyframes newarea {
+	0% {
+		text-shadow: 10px 0px 20px orangered, -10px 0px 20px orangered;
+	}
+
+	50% {
+		text-shadow: 40px 0px 20px orangered, -40px 0px 20px orangered;
+	}
+
+	100% {
+		text-shadow: 10px 0px 20px orangered, -10px 0px 20px orangered;
+	}
+}
+
+.custom-text-control {
+	background-color: rgba(150,150,150,0.2);
+	border: 1px solid var(--lighterColor);
+	color: #fff4e0;
+	resize: none;
+}
+
+	.custom-text-control::placeholder {
+		color: gainsboro;
+	}
+
+	.custom-text-control:focus {
+		background-color: rgba(150,150,150,0.2);
+		border: 1px solid rgba(100,100,100,0.1);
+		color: white;
+		outline: 2px solid var(--darkerColor);
+		box-shadow: none;
+	}
+
+.custom-select {
+	background-color: rgba(150,150,150,0.2);
+	border: 1px solid var(--lighterColor);
+}
+
+	.custom-select:focus {
+		border: 1px solid rgba(100,100,100,0.1);
+		outline: 2px solid var(--darkerColor);
+		box-shadow: none;
+	}
+
+.no-items-p {
+	padding-left: 20px;
+	padding-top: 5px;
+}
+
+.ds-popup-overlay {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 12;
+}
+
+.ds-popup-container {
+	background-image: linear-gradient(to right, transparent, rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9), rgba(20, 20, 20, 0.9), transparent);
+	border-top: 2px solid var(--lighterColor);
+	border-bottom: 2px solid var(--lighterColor);
+	width: 800px;
+	padding: 30px;
+	text-align: center;
+}
+
+	.ds-popup-container p {
+		font-size: 18px;
+	}
+
+.ds-popup-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	margin-top: 30px;
+}
+
+	.ds-popup-buttons button {
+		width: 250px;
+	}
+
+
+.announce-popup {
+	position: fixed;
+	width: 100vw;
+	text-align: center;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	padding: 0px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+	z-index: 12;
+}
+
+.victory-popup-text {
+	font-family: DarkSoulsHeader;
+	margin: 0;
+	color: orange;
+	font-size: 150px;
+	animation: newarea;
+	animation-duration: 2.5s;
+	text-shadow: 10px 0px 20px orangered, -10px 0px 20px orangered;
+	user-select: none;
+}
+
+.abandoned-popup-text {
+	font-family: DarkSoulsHeader;
+	margin: 0;
+	color: darkred;
+	font-size: 130px;
+	animation: death;
+	animation-duration: 10s;
+	user-select: none;
+}
+
+.announce-popup.show {
+	opacity: 1;
+}
+
+@keyframes death {
+	from {
+		font-size: 130px;
+	}
+
+	to {
+		font-size: 170px;
+	}
+}
+
+.new-objective-popup {
+	position: fixed;
+	width: 60vw;
+	height: 82px;
+	text-align: center;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: transparent;
+	color: white;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+	z-index: 12;
+	
+}
+
+	.new-objective-popup::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 0;
+		border-bottom: 3px solid white;
+		border-left: 15px solid transparent;
+		border-right: 15px solid transparent;
+	}
+
+	.new-objective-popup p {
+		font-size: 70px;
+		color: white;
+		text-shadow: 5px -2px 5px black;
+		margin: 0;
+		user-select: none;
+	}
+
+	.new-objective-popup.show {
+		opacity: 1;
+	}
+
+.form-popup {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 6;
+	display: none;
+	align-items: center;
+	justify-content: center;
+}
+
+.form-popup-summary {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.form-popup-header {
+	background-color: rgba(10,10,10,0.8);
+	padding: 20px 40px;
+}
+
+	.form-popup-header p {
+		font-size: 30px;
+		margin: 0;
+		color: var(--lighterColorText);
+	}
+
+.form-container-framer {
+	position: relative;
+}
+
+.form-container {
+	width: 600px;
+	padding: 80px;
+	background-color: rgba(10,10,10,0.8);
+	box-shadow: 1px 1px 20px rgba(0,0,0,0.5);
+	background-size: 300px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}

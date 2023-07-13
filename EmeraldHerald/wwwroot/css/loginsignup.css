@@ -1,0 +1,28 @@
+﻿.form-container {
+	width: 25vw;
+	border-radius: 20px;
+	
+	margin: 50px auto;
+}
+
+.form-container-background {
+	background-image: url("/assets/embers.png");
+	background-size: cover;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+	.login-form button {
+		margin-top: 20px;
+	}
+
+.form-container {
+	background-color: transparent;
+	box-shadow: none;
+	padding: 0;
+	width: 30vw;
+}

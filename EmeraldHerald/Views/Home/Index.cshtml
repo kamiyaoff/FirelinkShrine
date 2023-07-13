@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Bonfire";
+}
+
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true"/>
+
+<div class="home-container">
+	<p class="firelink-shrine-text">Firelink Shrine</p>
+	<div class="welcome-container">
+		<div class="dark-sign-img">
+			<img src="~/assets/darksign.png" alt="darksign" />
+		</div>
+		<div>
+			<p class="welcome-text">
+				Welcome, another unkindled one. This is Firelink Shrine, your new shelter or home if you wish so.
+				Here you can rest and plan your next moves. As a champion of ash your purpose is clear, you must find Lords of the Cinder,
+				defeat them and earn the title of true Lord of the Cinder. Good luck in your journey. May the flames guide your way.
+			</p>
+			<p class="p-info">In <b>Tasks</b> you can youself new goals and move towards them.</p>
+			<p class="p-info">In <b>Notes</b> you can note some important information that might help you in your journey.</p>
+			<p>But before you start you have to prove that you are champion of ash. Follow to the "Log In" link</p>
+			<div class="home-nav-links">
+				<a class="btn-dark-souls-strict" asp-controller="Home" asp-action="Login">Login</a>
+				<a class="btn-dark-souls-strict" asp-action="Signup" asp-controller="Home">Signup</a>
+				<a class="btn-dark-souls-strict" asp-action="Index" asp-controller="Objective">Tasks</a>
+				<a class="btn-dark-souls-strict" href="#">Notes</a>
+			</div>
+		</div>
+	</div>
+</div>
